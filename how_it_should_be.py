@@ -10,3 +10,8 @@ def positive_sum(arr):
         if e > 0:
             sum = sum + e
     return sum
+
+
+
+def double_char(s):
+    return ''.join(c * 2 for c in s)
