@@ -20,3 +20,7 @@ def sum_two_smallest_numbers(numbers):
         numbers.remove(minimum)
 
     return sum(min_values)
+
+
+def positive_sum(arr):
+    return sum(n for n in arr if n > 0)
