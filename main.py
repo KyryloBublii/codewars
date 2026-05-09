@@ -41,3 +41,26 @@ def double_char(s):
         res+=c*2
 
     return res
+
+def repeat_str(repeat, string):
+    return string*repeat
+
+
+def find_average(numbers):
+    # if len(numbers) == 0: return 0
+    #
+    # sum = 0
+    #
+    # for n in numbers:
+    #     sum += n
+    #
+    # return sum / len(numbers)
+
+    return (sum(numbers) / len(numbers)) if len(numbers) else 0
+
+def descending_order(num):
+    numbers = list(str(num))
+
+    res = "".join(sorted(numbers)[::-1])
+
+    return int(res)

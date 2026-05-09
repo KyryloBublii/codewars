@@ -11,7 +11,8 @@ def positive_sum(arr):
             sum = sum + e
     return sum
 
-
-
 def double_char(s):
     return ''.join(c * 2 for c in s)
+
+def Descending_Order(num):
+    return int("".join(sorted(str(num), reverse=True)))
