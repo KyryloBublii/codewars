@@ -1,3 +1,6 @@
+import string
+
+
 def digital_root(n):
     while n >= 10:
         n = sum(int(d) for d in str(n))
@@ -64,3 +67,8 @@ def descending_order(num):
     res = "".join(sorted(numbers)[::-1])
 
     return int(res)
+
+
+def xo(string:str) -> bool:
+    return string.lower().count('x') == string.lower().count('o')
+

@@ -36,5 +36,16 @@ class TestDescendingOrder(unittest.TestCase):
         self.assertEqual(descending_order(123456789), 987654321)
 
 
+class TestXO(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(xo("ooxx"),    True)
+        self.assertEqual(xo("xooxx"),   False)
+        self.assertEqual(xo("ooxXm"),   True)   # case-insensitive
+        self.assertEqual(xo("zpzpzpp"), True)   # no x/o present → equal counts
+        self.assertEqual(xo("zzoo"),    False)
+        self.assertEqual(xo("oxOx"),    True)
+        self.assertEqual(xo(""),        True)   # empty string
+
+
 if __name__ == '__main__':
     unittest.main()
