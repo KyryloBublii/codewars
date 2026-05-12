@@ -47,5 +47,15 @@ class TestXO(unittest.TestCase):
         self.assertEqual(xo(""),        True)   # empty string
 
 
+class TestRemoveChar(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(remove_char('eloquent'), 'loquen')
+        self.assertEqual(remove_char('country'), 'ountr')
+        self.assertEqual(remove_char('person'), 'erso')
+        self.assertEqual(remove_char('place'), 'lac')
+        self.assertEqual(remove_char('ok'), '')
+        self.assertEqual(remove_char('ooopsss'), 'oopss')
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -72,3 +72,5 @@ def descending_order(num):
 def xo(string:str) -> bool:
     return string.lower().count('x') == string.lower().count('o')
 
+def remove_char(s: str):
+    return s[1:len(s)-1]

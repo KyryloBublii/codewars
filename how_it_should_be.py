@@ -16,3 +16,9 @@ def double_char(s):
 
 def Descending_Order(num):
     return int("".join(sorted(str(num), reverse=True)))
+
+def remove_char(s):
+    return s[1 : -1]
+
+remove_char1 = lambda s: s[1:-1]
+
