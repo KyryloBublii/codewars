@@ -22,3 +22,10 @@ def remove_char(s):
 
 remove_char1 = lambda s: s[1:-1]
 
+
+def array_diff(a: list, b: list):
+    set_b = set(b)
+    return [item for item in a if item not in set_b]
+
+def array_diff1(a, b):
+    return [x for x in a if x not in b]

@@ -57,5 +57,15 @@ class TestRemoveChar(unittest.TestCase):
         self.assertEqual(remove_char('ooopsss'), 'oopss')
 
 
+class TestArrayDiff(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(array_diff([1,2], [1]), [2])
+        self.assertEqual(array_diff([1,2,2], [1]), [2,2])
+        self.assertEqual(array_diff([1,2,2], [2]), [1])
+        self.assertEqual(array_diff([1,2,2], []), [1,2,2])
+        self.assertEqual(array_diff([], [1,2]), [])
+        self.assertEqual(array_diff([1,2,3], [1,2]), [3])
+
+
 if __name__ == '__main__':
     unittest.main()
