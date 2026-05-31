@@ -1,5 +1,7 @@
+import re
 import string
-
+from os import pread
+import math
 
 def digital_root(n):
     while n >= 10:
@@ -94,3 +96,67 @@ def array_diff(a:list, b:list):
 
     return c
 
+'''
+Complete the solution so that the function will break up camel casing, using a space between words.
+
+Example
+"camelCasing"  =>  "camel Casing"
+"identifier"   =>  "identifier"
+""             =>  ""
+'''
+
+def solution(s:str):
+    res = ""
+    for char in s:
+        if char.isupper():
+            res = res + " " + char
+        else:
+            res = res + char
+
+    return res
+
+def to_camel_case(test):
+    words = re.split(r'[-_]', test)
+    return words[0] + "".join(w[0].upper() + w[1:] for w in words[1:])
+
+def increment_string(string):
+    num = re.match(r"^(.*?)(\d+)$", string)
+
+    if num:
+        prefix, suffix = num.group(1), num.group(2)
+        return prefix + str(int(suffix) + 1).zfill(len(suffix))
+    else:
+        return string + "1"
+
+"""
+Complete the method that takes a boolean value and return a "Yes" string for true, or a "No" string for false.
+"""
+
+def bool_to_word(boolean):
+    return "Yes" if boolean else "No"
+
+
+"""
+A square of squares
+You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+
+However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+
+Task
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+Examples
+-1  =>  false
+ 0  =>  true
+ 3  =>  false
+ 4  =>  true
+25  =>  true
+26  =>  false
+"""
+
+def is_square(n):
+    return math.sqrt(n).is_integer() if n >= 0 else False

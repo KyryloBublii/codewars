@@ -67,5 +67,35 @@ class TestArrayDiff(unittest.TestCase):
         self.assertEqual(array_diff([1,2,3], [1,2]), [3])
 
 
+class TestToCamelCase(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(to_camel_case(""), "", "An empty string was provided but not returned")
+        self.assertEqual(to_camel_case("the_stealth_warrior"), "theStealthWarrior", "to_camel_case('the_stealth_warrior') did not return correct value")
+        self.assertEqual(to_camel_case("The-Stealth-Warrior"), "TheStealthWarrior", "to_camel_case('The-Stealth-Warrior') did not return correct value")
+        self.assertEqual(to_camel_case("A-B-C"), "ABC", "to_camel_case('A-B-C') did not return correct value")
+
+
+class TestIncrementString(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(increment_string("foo"), "foo1")
+        self.assertEqual(increment_string("foobar001"), "foobar002")
+        self.assertEqual(increment_string("foobar1"), "foobar2")
+        self.assertEqual(increment_string("foobar00"), "foobar01")
+        self.assertEqual(increment_string("foobar99"), "foobar100")
+        self.assertEqual(increment_string("foobar099"), "foobar100")
+        self.assertEqual(increment_string("fo99obar99"), "fo99obar100")
+        self.assertEqual(increment_string(""), "1")
+
+
+class TestIsSquare(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(is_square(-1), False, "-1: Negative numbers cannot be square numbers")
+        self.assertEqual(is_square( 0), True,  "0 is a square number (0 * 0)")
+        self.assertEqual(is_square( 3), False, "3 is not a square number")
+        self.assertEqual(is_square( 4), True,  "4 is a square number (2 * 2)")
+        self.assertEqual(is_square(25), True,  "25 is a square number (5 * 5)")
+        self.assertEqual(is_square(26), False, "26 is not a square number")
+
+
 if __name__ == '__main__':
     unittest.main()

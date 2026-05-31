@@ -29,3 +29,7 @@ def array_diff(a: list, b: list):
 
 def array_diff1(a, b):
     return [x for x in a if x not in b]
+
+
+def solution(s: str):
+    return "".join(" " + c if c.isupper() else c for c in s)
