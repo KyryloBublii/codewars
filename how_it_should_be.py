@@ -33,3 +33,29 @@ def array_diff1(a, b):
 
 def solution(s: str):
     return "".join(" " + c if c.isupper() else c for c in s)
+
+
+def rot13(message):
+    root13in = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    root13out = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
+    root13map = dict(zip(root13in, root13out))
+
+    res = ''.join([root13map.get(s, s) for s in message])
+
+    return res
+
+def rot131(message):
+    PAIRS = dict(zip("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"))
+    return "".join(PAIRS.get(c, c) for c in message)
+
+def rot132(message):
+    def decode(c):
+        if 'a' <= c <= 'z':
+            base = 'a'
+        elif 'A' <= c <= 'Z':
+            base = 'A'
+        else:
+            return c
+        return chr((ord(c) - ord(base) + 13) % 26 + ord(base))
+    return "".join(decode(c) for c in message)

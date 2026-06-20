@@ -2,6 +2,8 @@ import re
 import string
 from os import pread
 import math
+from os.path import split
+
 
 def digital_root(n):
     while n >= 10:
@@ -160,3 +162,134 @@ Examples
 
 def is_square(n):
     return math.sqrt(n).is_integer() if n >= 0 else False
+
+def reverse_words(text):
+    split = text.split(' ')
+
+    return  ' '.join(t[::-1] for t in split)
+
+class RomanNumerals:
+    dict_roma = {
+        "M": 1000,
+        "CM": 900,
+        "D": 500,
+        "CD": 400,
+        "C": 100,
+        "XC": 90,
+        "L": 50,
+        "XL": 40,
+        "X": 10,
+        "IX": 9,
+        "V": 5,
+        "IV": 4,
+        "I": 1
+    }
+    @staticmethod
+    def to_roman(val : int) -> str:
+        ar = RomanNumerals.dict_roma[val]
+
+        return ''
+
+    @staticmethod
+    def from_roman(roman_num : str) -> int:
+        return 0
+
+
+def permutations(s):
+    if len(s) == 0:
+        return []
+    elif len(s) == 1:
+        return [s]
+
+    result = []
+
+    for char in s:
+        remaining = s.replace(char, '', 1)
+        perm = permutations(remaining)
+        for p in perm:
+            result.append(char + p)
+
+    return list(set(result))
+
+
+
+rot13_map = {
+    'A' : 'N',
+    'B' : 'O',
+    'C' : 'P',
+    'D' : 'Q',
+    'E' : 'R',
+    'F' : 'S',
+    'G' : 'T',
+    'H' : 'U',
+    'I' : 'V',
+    'J' : 'W',
+    'K' : 'X',
+    'L' : 'Y',
+    'M' : 'Z',
+    'a' : 'n',
+    'b' : 'o',
+    'c' : 'p',
+    'd' : 'q',
+    'e' : 'r',
+    'f' : 's',
+    'g' : 't',
+    'h' : 'u',
+    'i' : 'v',
+    'j' : 'w',
+    'k' : 'x',
+    'l' : 'y',
+    'm' : 'z'
+}
+
+
+def rot13(message: str):
+    result = ""
+
+    for ch in message:
+        if 'a' <= ch <= 'z':
+            result += chr((ord(ch) - ord('a') + 13) % 26 + ord('a'))
+        elif 'A' <= ch <= 'Z':
+            result += chr((ord(ch) - ord('A') + 13) % 26 + ord('A'))
+        else:
+            result += ch
+
+    return result
+
+
+'''
+1, 246, 2, 123, 3, 82, 6, 41 are the divisors of number 246.
+
+Squaring these divisors we get: 1, 60516, 4, 15129, 9, 6724, 36, 1681.
+
+The sum of these squares is 84100 which is 290 * 290.
+
+Task
+Find all integers between m and n (m and n are integers with 1 <= m <= n) such that the sum of their squared divisors is itself a square.
+
+We will return an array of subarrays or of tuples (in C an array of Pair) or a string.
+
+The subarrays (or tuples or Pairs) will have two elements: first the number the squared divisors of which is a square and 
+then the sum of the squared divisors.
+
+Example:
+m =  1, n = 250 --> [[1, 1], [42, 2500], [246, 84100]]
+m = 42, n = 250 --> [[42, 2500], [246, 84100]]
+The form of the examples may change according to the language, see "Sample Tests".
+
+Note
+In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: 
+you can use dynamically allocated character strings.
+'''
+
+def list_squared(m, n) -> list:
+    result = []
+
+    for k in range(m, n + 1):
+        divisors = [i for i in range(1, k + 1) if k % i == 0] # fill array with numbers that divide k
+        sum_sq = sum(d * d for d in divisors) # sum of all squared divisors
+        sqrt = math.isqrt(sum_sq) # gives result of square root
+        if sqrt * sqrt == sum_sq: # checks if it is perfect square
+            result.append([k, sum_sq])
+
+    return result

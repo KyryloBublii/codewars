@@ -97,5 +97,13 @@ class TestIsSquare(unittest.TestCase):
         self.assertEqual(is_square(26), False, "26 is not a square number")
 
 
+class TestListSquared(unittest.TestCase):
+    def test_basic(self):
+        self.assertEqual(list_squared(1, 250), [[1, 1], [42, 2500], [246, 84100]])
+        self.assertEqual(list_squared(42, 250), [[42, 2500], [246, 84100]])
+        self.assertEqual(list_squared(1, 1), [[1, 1]])
+        self.assertEqual(list_squared(2, 5), [])
+
+
 if __name__ == '__main__':
     unittest.main()
