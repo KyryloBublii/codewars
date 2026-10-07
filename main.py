@@ -293,3 +293,15 @@ def list_squared(m, n) -> list:
             result.append([k, sum_sq])
 
     return result
+
+def number_to_string(num):
+    return str(num)
+
+def duplicate_count(text):
+    text = text.lower()
+    count = 0
+
+    for char in set(text):
+        if text.count(char) > 1:
+            count += 1
+    return count
