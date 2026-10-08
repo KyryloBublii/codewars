@@ -308,3 +308,15 @@ def duplicate_count(text):
 
 def opposite(number:int):
     return -number
+
+def find_uniq(arr):
+    uniq = {}
+    for n in arr:
+        if n not in uniq.keys():
+            uniq[n] = 1
+        else:
+            uniq[n] += 1
+
+    for k, v in uniq.items():
+        if v == 1:
+            return k
