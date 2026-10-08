@@ -305,3 +305,6 @@ def duplicate_count(text):
         if text.count(char) > 1:
             count += 1
     return count
+
+def opposite(number:int):
+    return -number
